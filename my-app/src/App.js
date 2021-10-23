@@ -41,7 +41,6 @@ const App= () => {
       </Route>
       <Route path="/sale/registration" exact>
         <SManagment />
-        
       </Route>
       <Route path="/user/managment" exact>
         <UManagment />

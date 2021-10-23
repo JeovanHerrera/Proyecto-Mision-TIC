@@ -8,5 +8,6 @@ router.get("/1", salesController.getProducts);
 router.get("/:id", salesController.getProductId);
 router.get("/fecha/:fecha", salesController.getVentasFecha);
 router.put("/edit/:id", salesController.editSalesID);
+router.post("/add", salesController.addSales);
 //router.delete("");
 module.exports = router;

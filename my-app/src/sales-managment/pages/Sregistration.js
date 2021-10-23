@@ -90,7 +90,6 @@ const Sregistration = () => {
         handleDate={handleDate}
         ventaID={ventaID}
         handleVentaID={handleVentaID}
-        handleBuscar={handleBuscar}
         handleFecha={handleFecha}
         handleVentaState={handleVentaState}
         className="mt-1"

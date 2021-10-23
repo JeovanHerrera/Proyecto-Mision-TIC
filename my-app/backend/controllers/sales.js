@@ -1,7 +1,7 @@
 const testVentas = require("../models/ventasModel");
 
 exports.getProductId = (req, res) => {
-  testVentas.findById(req.params.id).then((productResult) => {
+  testVentas.findById(req.params.id).populate("Productos.producto").then((productResult) => {
     if (productResult) {
       res.status(201).json(productResult);
     } else {
@@ -34,7 +34,6 @@ exports.getProducts = (req, res) => {
 };
 
 exports.editSalesID = (req, res) => {
-  console.log("Aquí");
   const id = req.params.id;
   const salesUpd = new testVentas({
     _id: id,
@@ -47,5 +46,21 @@ exports.editSalesID = (req, res) => {
     });
   testVentas.findByIdAndUpdate(id, salesUpd).then((productoResult) => {
     res.status(200).json("La venta se actualizó satisfactoriamente");
+  });
+};
+
+exports.addSales = (req, res) => {
+  const salesUpd = new testVentas({
+
+        Fecha: req.body.Fecha,
+        Valor: req.body.valorTotal,
+        Estado: req.body.Estado,
+        Productos: [...req.body.Productos],
+        Cliente: req.body.Cliente,
+        Vendedor: req.body.Vendedor
+      },
+    );
+  salesUpd.save().then((productoResult) => {
+    res.status(201).json("La venta se actualizó satisfactoriamente");
   });
 };
