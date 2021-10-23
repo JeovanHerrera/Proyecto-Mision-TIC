@@ -17,7 +17,7 @@ const Sregistration = () => {
       editVenta.Estado = ventaState;
       console.log(editVenta);
 
-      fetch("http://localhost:3000/api/sales/edit/" + ventaID, {
+      fetch("https://misiontic-team.herokuapp.com/api/sales/edit/" + ventaID, {
         method: 'PUT', 
         headers: {
           'Content-Type': 'application/json'
@@ -26,7 +26,7 @@ const Sregistration = () => {
         body: JSON.stringify(editVenta) // body data type must match "Content-Type" header
       })
       .then((response) => response.json())
-      .then(fetch("http://localhost:3000/api/sales/" + ventaID)
+      .then(fetch("https://misiontic-team.herokuapp.com/api/sales/" + ventaID)
       .then((response) => response.json())
       .then((data) => {
         setVentas([data]);
@@ -41,20 +41,20 @@ const Sregistration = () => {
   const handleBuscar = () => {
     if (ventaID === "" && date === "") {
       
-      fetch("http://localhost:3000/api/sales/1")
+      fetch("https://misiontic-team.herokuapp.com/api/sales/1")
         .then((response) => response.json())
         .then((data) => setVentas(data))
         .catch((e) => console.log(e));
         
     } else if (ventaID !== "") {
-      fetch("http://localhost:3000/api/sales/" + ventaID)
+      fetch("https://misiontic-team.herokuapp.com/api/sales/" + ventaID)
         .then((response) => response.json())
         .then((data) => {
           setVentas([data]);
         })
         .catch((e) => console.log(e));
     } else {
-      fetch("http://localhost:3000/api/sales/fecha/" + date)
+      fetch("https://misiontic-team.herokuapp.com/api/sales/fecha/" + date)
         .then((response) => response.json())
         .then((data) => {
           setVentas(data);
@@ -74,7 +74,7 @@ const Sregistration = () => {
     setVentaState(event.target.value);
   };
   const handleFecha = () => {
-    fetch("http://localhost:3000/api/sales/fecha/" + date)
+    fetch("https://misiontic-team.herokuapp.com/api/sales/fecha/" + date)
       .then((response) => response.json())
       .then((data) => {
         setVentas(data);

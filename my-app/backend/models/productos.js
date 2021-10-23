@@ -7,4 +7,4 @@ const producto = mongoose.Schema({
   state: { type: Boolean, required: true },
 });
 
-module.exports = mongoose.model("Productos", producto);
+module.exports = mongoose.model("Producto", producto);
